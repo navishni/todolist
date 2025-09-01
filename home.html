@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="">To Do List</h1>
+    <form action="/toggle-theme" method="POST" class="theme">
+      <button type="submit">🌙 Change Theme</button>
+    </form>
+  </header>
+  <div class="container">
+    <form action="/add" method="POST">
+      <input type="text" name="task" placeholder="Enter a new task" required>
+      <input type="date" name="dueDate" required>
+      <input type="time" name="dueTime" required> 
+      <button type="submit">Add Task</button>
+    </form>
+
+  </div>
+  <div class="container1">
+  {% for task in tasks %}
+    <div class="modify">
+      <p>{{ task.description }} <br> {{ task.dueDate }} <br> {{ task.dueTime }}</p>
+      <div class="actions">
+        <form action="/delete" method="POST" style="display:inline;">
+          <button type="submit" name="taskId" value="{{ task.id }}">Delete</button>
+        </form>
+        <form action="/edit" method="GET" style="display:inline;">
+          <button type="submit" name="taskId" value="{{ task.id }}">Edit</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+</html>
+
+

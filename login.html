@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List|Login Page</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class="login">
+    <h1 class="log">To Do List</h1>
+    <p class="sub">Stay Productive</p>
+    <form class="details" action="{{url_for('login')}}" method="post" >
+        <input type="email" name="email" placeholder="EMAIL"/>
+        <input type="password" name="password" placeholder="PASSWORD"/>
+        <button type ="submit" class="btn1">Login</button>
+        <p>Don't have an account? <a href="{{ url_for('signup_page') }}">Sign up</a></p>
+    </form>
+</div>
+</body>
+</html>

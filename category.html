@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="">To Do List</h1>
+    <form action="/toggle-theme" method="POST" class="theme">
+      <button type="submit">🌙 Change Theme</button>
+    </form>
+  </header>
+  <div class="category">
+    <h2>categories</h2>
+    {% for categories in categories %}
+        <div class="category1">
+            <h4>{{category.name}}</h4>
+            <p>{{category.task|length}}</p>
+            <a href="{{url_for('view_category',category_id=category.id)}}" class="btn">View tasks</a>
+        </div>
+    {% endfor %}
+   </div>
+</html>
